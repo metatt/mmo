@@ -26,6 +26,9 @@ io.on('connection', (socket) => {
   socket.on('playerMovement', (playerMovement) => {
     //Someone Moved!
     const player = gameState.players[socket.id]
+      if (!player) {
+    return; // Игрок ещё не инициализирован, игнорируем движение
+  }
     //These are boundaries
     const canvasWidth = 1200
     const canvasHeight = 700
